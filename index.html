@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Noura</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="bg-animation"></div>
+
+    <!-- Login Page -->
+    <div class="login-container" id="loginPage">
+        <div class="login-box">
+            <div class="logo">
+                <div class="logo-image">
+                    <img src="https://cdn-icons-png.flaticon.com/512/2721/2721245.png" alt="Noura Logo" id="logoImage">
+                </div>
+                <h1>NOURA</h1>
+                <p>Smart Expense Management</p>
+            </div>
+            
+            <!-- Login Form -->
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="loginUsername">Username</label>
+                    <input type="text" id="loginUsername" required placeholder="Enter your username">
+                </div>
+                <div class="form-group">
+                    <label for="loginPassword">Password</label>
+                    <input type="password" id="loginPassword" required placeholder="Enter your password">
+                </div>
+                <button type="submit" class="btn">Sign In</button>
+                <div class="switch-form">
+                    Don't have an account? 
+                    <a href="#" id="showSignup">Sign Up</a>
+                </div>
+            </form>
+
+            <!-- Signup Form -->
+            <form id="signupForm" style="display: none;">
+                <div class="form-group">
+                    <label for="signupUsername">Username</label>
+                    <input type="text" id="signupUsername" required placeholder="Choose a username" minlength="3">
+                </div>
+                <div class="form-group">
+                    <label for="signupEmail">Email</label>
+                    <input type="email" id="signupEmail" required placeholder="Enter your email">
+                </div>
+                <div class="form-group">
+                    <label for="signupPassword">Password</label>
+                    <input type="password" id="signupPassword" required placeholder="Choose a password" minlength="6">
+                </div>
+                <div class="form-group">
+                    <label for="confirmPassword">Confirm Password</label>
+                    <input type="password" id="confirmPassword" required placeholder="Confirm your password">
+                </div>
+                <button type="submit" class="btn">Create Account</button>
+                <div class="switch-form">
+                    Already have an account? 
+                    <a href="#" id="showLogin">Sign In</a>
+                </div>
+            </form>
+
+            <div class="auth-message" id="authMessage"></div>
+        </div>
+    </div>
+
+    <!-- Dashboard -->
+    <div class="dashboard" id="dashboard">
+        <div class="container">
+            <div class="header">
+                <h1>NOURA</h1>
+                <div class="user-info">
+                    <div class="user-badge">
+                        <div class="user-avatar" id="userAvatar">N</div>
+                        <span class="user-name" id="userName"></span>
+                    </div>
+                    <button class="logout-btn" id="logoutBtn">Logout</button>
+                </div>
+            </div>
+
+            <div class="stats-grid">
+                <div class="stat-card total">
+                    <h3>Total Expenses</h3>
+                    <div class="amount" id="totalExpenses">K 0.00</div>
+                </div>
+                <div class="stat-card">
+                    <h3>This Month</h3>
+                    <div class="amount" id="monthExpenses">K 0.00</div>
+                </div>
+                <div class="stat-card">
+                    <h3>This Week</h3>
+                    <div class="amount" id="weekExpenses">K 0.00</div>
+                </div>
+                <div class="stat-card">
+                    <h3>Today</h3>
+                    <div class="amount" id="todayExpenses">K 0.00</div>
+                </div>
+            </div>
+
+            <div class="budget-wrapper">
+                <div class="card budget-card">
+                    <div class="budget-header">
+                        <div class="budget-icon"></div>
+                        <h2>Budget Manager</h2>
+                    </div>
+                    
+                    <div class="budget-controls">
+                        <div class="budget-input-wrapper">
+                            <label for="monthlyBudget">Set Monthly Budget</label>
+                            <div class="budget-input-group">
+                                <span class="currency-symbol">K</span>
+                                <input type="number" id="monthlyBudget" step="0.01" placeholder="5000.00">
+                                <button type="button" id="setBudgetBtn">Set Budget</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div id="budgetStatus"></div>
+                    
+                    <div class="budget-tips">
+                        <div class="tip-item">
+                            <span class="tip-icon">💡</span>
+                            <span class="tip-text">Set a realistic budget to track your spending effectively</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-grid">
+                <div class="card">
+                    <h2>Add Expense</h2>
+                    <form id="expenseForm">
+                        <div class="input-group">
+                            <label for="expenseName">Expense Name</label>
+                            <input type="text" id="expenseName" required placeholder="e.g., Groceries">
+                        </div>
+                        <div class="form-row">
+                            <div class="input-group">
+                                <label for="amount">Amount (ZMW)</label>
+                                <input type="number" id="amount" step="0.01" required placeholder="0.00">
+                            </div>
+                            <div class="input-group">
+                                <label for="category">Category</label>
+                                <select id="category" required>
+                                    <option value="">Select category</option>
+                                    <option value="Food">🍔 Food</option>
+                                    <option value="Transport">🚗 Transport</option>
+                                    <option value="Utilities">⚡ Utilities</option>
+                                    <option value="Entertainment">🎮 Entertainment</option>
+                                    <option value="Healthcare">🏥 Healthcare</option>
+                                    <option value="Shopping">🛍️ Shopping</option>
+                                    <option value="Education">📚 Education</option>
+                                    <option value="Other">📌 Other</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="input-group">
+                            <label for="date">Date</label>
+                            <input type="date" id="date" required>
+                        </div>
+                        <div class="input-group">
+                            <label for="notes">Notes (Optional)</label>
+                            <textarea id="notes" placeholder="Add additional details..."></textarea>
+                        </div>
+                        <button type="submit" class="add-btn">Add Expense</button>
+                    </form>
+                </div>
+
+                <div class="card">
+                    <h2>Recent Expenses</h2>
+                    <div class="filter-section">
+                        <select id="filterCategory">
+                            <option value="">All Categories</option>
+                            <option value="Food">🍔 Food</option>
+                            <option value="Transport">🚗 Transport</option>
+                            <option value="Utilities">⚡ Utilities</option>
+                            <option value="Entertainment">🎮 Entertainment</option>
+                            <option value="Healthcare">🏥 Healthcare</option>
+                            <option value="Shopping">🛍️ Shopping</option>
+                            <option value="Education">📚 Education</option>
+                            <option value="Other">📌 Other</option>
+                        </select>
+                        <select id="filterPeriod">
+                            <option value="all">All Time</option>
+                            <option value="today">Today</option>
+                            <option value="week">This Week</option>
+                            <option value="month">This Month</option>
+                        </select>
+                        <button id="exportBtn" class="add-btn" style="width: auto; padding: 11px 18px; font-size: 0.875em;">Export CSV</button>
+                    </div>
+                    <div class="expense-list" id="expenseList">
+                        <div class="empty-state">
+                            <p>No expenses yet. Add your first expense!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
